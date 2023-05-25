@@ -25,6 +25,7 @@ Dockerfile
 docker-compose.yml
 worker/Dockerfile
 .dockerignore
-var/config.py
 main_test.py
-data/
+
+attachments/
+db.sqlite3
