@@ -1,0 +1,30 @@
+# Created by https://www.toptal.com/developers/gitignore/api/vuejs
+# Edit at https://www.toptal.com/developers/gitignore?templates=vuejs
+
+### Vuejs ###
+# Recommended template: Node.gitignore
+
+node_modules/
+dist/
+npm-debug.log
+yarn-error.log
+
+# End of https://www.toptal.com/developers/gitignore/api/vuejs
+
+.idea/
+.vscode/
+*.iml
+.DS_Store
+venv/
+.pytest_cache/
+**__pycache__/
+rabbit/
+test.py
+.env
+Dockerfile
+docker-compose.yml
+worker/Dockerfile
+.dockerignore
+var/config.py
+main_test.py
+data/
