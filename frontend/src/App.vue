@@ -64,6 +64,7 @@ import moment from 'moment';
 import VueImageUploadResize from 'vue-image-upload-resize';
 
 export default {
+
   data() {
     return {
       comments: [],
@@ -250,9 +251,10 @@ export default {
         <div class="comment" :style="{ marginLeft: depth * 80 + 'px' }">
           <div class="comment-box">
             <div class="comment-box-top">
-              <p><b>{{ comment.user_name }}</b> {{ formatDate(comment.created_at) }}</p>
+              <p><b>{{ comment.user_name }}</b> {{ formatDate(comment.created_at) }} (Comment ID №{{ comment.id}}) </p>
             </div>
             <p>{{ comment.text }}</p>
+            <img v-if="comment.image" :src="comment.image" alt="Comment Image" class="comment-image" />
           </div>
         </div>
       `
@@ -270,6 +272,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.comment {
+  margin-bottom: 10px;
 }
 
 .comment-box {
@@ -345,4 +351,8 @@ export default {
   margin: 0 5px;
 }
 
+.comment-image {
+  max-width: 100%;
+  margin-top: 10px;
+}
 </style>

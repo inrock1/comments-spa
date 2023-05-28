@@ -9,7 +9,7 @@ from .serializers import CommentSerializer
 
 
 class CommentPagination(PageNumberPagination):
-    page_size = 3
+    page_size = 25
 
 
 class CommentAPIView(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
