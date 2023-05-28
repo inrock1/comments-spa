@@ -150,18 +150,24 @@ export default {
     },
 
     createComment() {
-      const formData = new FormData();
-
-      this.validateCommentText(this.newComment.text)
+      this.validateCommentText(this.newComment.text);
 
       if (this.newComment.image) {
-        this.resizeImage(this.newComment.image).then((blob) => {
-            formData.append('image', this.newComment.image, 'image.jpg');
-        });
+        this.resizeImage(this.newComment.image)
+          .then((resizedImage) => {
+            this.newComment.image = resizedImage;
+            this.sendComment();
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      } else {
+        this.sendComment();
       }
-      if (this.newComment.file) {
-        formData.append('file', this.newComment.file);
-      }
+    },
+
+    sendComment() {
+      const formData = new FormData();
       formData.append('user_name', this.newComment.user_name);
       formData.append('email', this.newComment.email);
       formData.append('home_page', this.newComment.home_page);
@@ -170,6 +176,12 @@ export default {
         formData.append('parent', this.newComment.parent);
       }
       formData.append('text', this.newComment.text);
+      if (this.newComment.image) {
+        formData.append('image', this.newComment.image, 'image.jpg');
+      }
+      if (this.newComment.file) {
+        formData.append('file', this.newComment.file);
+      }
 
       axios
         .post(process.env.VUE_APP_API_URL, formData)
@@ -182,14 +194,15 @@ export default {
             captcha: '',
             parent: null,
             text: '',
-            image: '',
-            file: ''
+            image: null,
+            file: null
           };
         })
         .catch(error => {
           console.error(error);
         });
     },
+
 
     formatDate(date) {
       return moment(date).format('YYYY-MM-DD [в] HH:mm');
