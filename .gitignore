@@ -3,11 +3,10 @@
 
 ### Vuejs ###
 # Recommended template: Node.gitignore
-
-node_modules/
-dist/
 npm-debug.log
 yarn-error.log
+frontend/node_modules
+frontend/.env
 
 # End of https://www.toptal.com/developers/gitignore/api/vuejs
 
@@ -29,3 +28,4 @@ main_test.py
 
 attachments/
 db.sqlite3
+comments_comment.json

@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "moment": "^2.29.4",
-    "vue-image-upload-resize": "^2.3.0"
+    "moment": "^2.29.4"
   }
 }

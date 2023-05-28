@@ -1,0 +1,27 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "author": "",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13",
+    "vue-axios": "^3.5.2",
+    "vue-image-upload-resize": "^2.3.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-service": "~5.0.0"
+  },
+  "_id": "frontend@1.0.0",
+  "license": "ISC",
+  "readme": "ERROR: No README data found!"
+}
