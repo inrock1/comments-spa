@@ -1,18 +1,13 @@
 from rest_framework import serializers
 from .models import Comment
-
-
-# class AttachmentSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Attachment
-#         fields = ('id', 'file', 'file_type')
-
+from bleach import clean
+from django.utils.safestring import mark_safe
 
 
 class CommentSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)
-    # attachments = AttachmentSerializer(many=True, read_only=True)
     replies = serializers.SerializerMethodField()
+    parent = serializers.PrimaryKeyRelatedField(queryset=Comment.objects.all(), required=False)
 
     class Meta:
         model = Comment
@@ -23,3 +18,13 @@ class CommentSerializer(serializers.ModelSerializer):
         serializer.bind('', self)
         return serializer.data
 
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['text'] = self.clean_html(representation['text'])
+        return representation
+
+    def clean_html(self, value):
+        allowed_tags = ['a', 'code', 'i', 'strong']
+        allowed_attributes = {'a': ['href', 'title']}
+        cleaned_value = clean(value, tags=allowed_tags, attributes=allowed_attributes)
+        return mark_safe(cleaned_value)

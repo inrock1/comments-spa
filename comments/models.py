@@ -33,16 +33,3 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-
-
-# class Attachment(models.Model):
-#     comment = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='attachments')
-#     file = models.FileField(null=True, upload_to=create_custom_path_file)
-#     image = models.ImageField(null=True, upload_to=create_custom_path_image)
-#
-#     def __str__(self):
-#         return f"Attachment {self.id}"
-#
-#     class Meta:
-#         verbose_name = 'Attachment'
-#         verbose_name_plural = 'Attachments'

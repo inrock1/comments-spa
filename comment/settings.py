@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+import bleach
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -136,7 +137,24 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ],
 }
+
+BLEACH_ALLOWED_TAGS = ['a', 'code', 'i', 'strong']
+
+BLEACH_ALLOWED_ATTRIBUTES = {
+    'a': ['href', 'title'],
+}
+
+BLEACH_ALLOWED_STYLES = []
+
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'SPA Comments API',
@@ -152,7 +170,8 @@ SPECTACULAR_SETTINGS = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',  # URL Vue-приложения
+    'http://localhost:8080',  # URL Vue-app
+    'http://192.168.31.135:8080',  # URL Vue-app
 ]
 
 MEDIA_ROOT = BASE_DIR / "attachments"

@@ -9,7 +9,7 @@ from .serializers import CommentSerializer
 
 
 class CommentPagination(PageNumberPagination):
-    page_size = 25
+    page_size = 3
 
 
 class CommentAPIView(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
@@ -18,7 +18,10 @@ class CommentAPIView(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyA
     parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
+        parent_id = self.request.query_params.get('parent_id')
         queryset = Comment.objects.filter(parent__isnull=True)
+        if parent_id:
+            queryset = Comment.objects.filter(parent_id=parent_id)
         return queryset
 
 
