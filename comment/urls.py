@@ -23,11 +23,9 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, Spec
 from comments.views import CommentAPIView, CommentRepliesAPIView
 
 urlpatterns = [
-    # URL-маршрут для списка комментариев (GET и POST)
+    # URL for list (GET и POST)
     path('api/comments/', CommentAPIView.as_view(), name='comment-list'),
-    # URL-маршрут для отдельного комментария (GET, PUT, DELETE)
-    path('api/comments/<int:pk>/', CommentAPIView.as_view(), name='comment-detail'),
-    # URL-маршрут для получения связанных комментариев
+    # URL for related comments
     path('api/comments/<int:parent_id>/replies/', CommentRepliesAPIView.as_view(), name='comment-replies'),
     path("admin/", admin.site.urls),
     path("api/doc/", SpectacularAPIView.as_view(), name="schema"),

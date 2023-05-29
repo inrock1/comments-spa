@@ -32,10 +32,6 @@
           <input type="text" id="home_page" v-model="newComment.home_page" class="form-input">
         </div>
         <div class="form-group">
-          <label for="captcha" class="form-label">Captcha:</label>
-          <input type="text" id="captcha" v-model="newComment.captcha" required class="form-input">
-        </div>
-        <div class="form-group">
           <label for="parent" class="form-label">Id comment for reply:</label>
           <input type="number" id="parent" v-model="newComment.parent" class="form-input">
         </div>
@@ -50,6 +46,10 @@
         <div class="form-group">
           <label for="attach_file">Attach file:</label>
           <input type="file" id="attach_file" @change="onFileChange" accept=".txt">
+        </div>
+        <div class="form-group">
+          <label for="captcha" class="form-label">Captcha:</label>
+          <div class="g-recaptcha" :data-sitekey="RE_CAPTCHA_SITE_KEY"></div>
         </div>
         <button type="submit" class="form-button">Send</button>
       </form>
@@ -79,6 +79,7 @@ export default {
         file: null
       },
       pagination: null,
+      RE_CAPTCHA_SITE_KEY: process.env.VUE_APP_RE_CAPTCHA_SITE_KEY,
     };
   },
   mounted() {
@@ -172,7 +173,7 @@ export default {
       formData.append('user_name', this.newComment.user_name);
       formData.append('email', this.newComment.email);
       formData.append('home_page', this.newComment.home_page);
-      formData.append('captcha', this.newComment.captcha);
+      formData.append('captcha', grecaptcha.getResponse());
       if (this.newComment.parent) {
         formData.append('parent', this.newComment.parent);
       }

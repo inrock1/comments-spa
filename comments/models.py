@@ -21,7 +21,7 @@ class Comment(models.Model):
     user_name = models.CharField(max_length=255)
     email = models.EmailField()
     home_page = models.URLField(blank=True)
-    captcha = models.CharField(max_length=255)
+    captcha = models.CharField(max_length=2047)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     file = models.FileField(null=True, upload_to=create_custom_path_file)
