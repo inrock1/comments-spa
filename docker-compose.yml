@@ -7,6 +7,10 @@ services:
             dockerfile: frontend/Dockerfile
         ports:
             - "8080:8080"
+        env_file:
+            - ./frontend/.env
+        command: npm run serve
+        entrypoint: npm run start
 
     backend:
         build:
