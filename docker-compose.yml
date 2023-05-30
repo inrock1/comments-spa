@@ -10,7 +10,6 @@ services:
         env_file:
             - ./frontend/.env
         command: npm run serve
-        entrypoint: npm run start
 
     backend:
         build:
