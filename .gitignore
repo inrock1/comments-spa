@@ -25,5 +25,5 @@ worker/Dockerfile
 main_test.py
 
 backend/attachments/
-db.sqlite3
+backend/db.sqlite3
 
