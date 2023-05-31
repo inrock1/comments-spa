@@ -5,9 +5,7 @@
 # Recommended template: Node.gitignore
 npm-debug.log
 yarn-error.log
-node_modules/
 frontend/node_modules
-frontend/.env
 
 # End of https://www.toptal.com/developers/gitignore/api/vuejs
 
@@ -20,13 +18,12 @@ venv/
 **__pycache__/
 rabbit/
 test.py
-.env
 Dockerfile
 docker-compose.yml
 worker/Dockerfile
 .dockerignore
 main_test.py
 
-attachments/
+backend/attachments/
 db.sqlite3
-comments_comment.json
+
