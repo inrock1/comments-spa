@@ -7,23 +7,20 @@ The application is built using Django REST Framework, Vue.js and PostgreSQL.
 
 ## Project setup
 Docker must be installed.  
-Fork the repo (GitHub repository)  
-Clone the forked repo
+Clone the project
 ```
-git clone the-link-from-your-forked-repo
+git clone https://github.com/inrock1/comments-spa.git
 ```
-Open the project folder in your IDE
-Open a terminal in the project folder
+Open a terminal in the project folder in your IDE  
 ```
 docker-compose build
 docker-compose up
 ```
 Run at http://localhost:8080/
-
+* if you don't see Captcha image, at first visit to this site, please reload the page.
 
 ### ScreenShots
 ![img_1.jpg](./readme_images/Screenshot_1.jpg)
 
 ![img_2.jpg](./readme_images/Screenshot_2.jpg)
 
-* if you don't see Captcha image, at first visit to this site, please reload the page.
